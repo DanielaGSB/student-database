@@ -19,4 +19,16 @@ feature 'students' do
       expect(page).not_to have_content 'No students to show'
     end
   end
+
+  context 'adding a new student' do
+    scenario 'prompts user to fill out a form on a student, then display students' do
+      visit '/'
+      click_link 'Add a student'
+      fill_in 'Name', with: 'Luca'
+      fill_in 'Email', with: 'luca@gmail.com'
+      click_button 'Create Student'
+      expect(page).to have_content 'Luca'
+      expect(current_path).to eq '/'
+    end
+  end
 end
