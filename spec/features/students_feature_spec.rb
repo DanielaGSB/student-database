@@ -30,6 +30,7 @@ feature 'students' do
       click_link 'Add a student'
       fill_in 'Name', with: 'Luca'
       fill_in 'Email', with: 'luca@gmail.com'
+      # all('student[school_ids]')[1].select_option
       select('CUNEF', from: 'student[school_ids]')
       click_button 'Create Student'
       expect(page).to have_content 'Luca'
