@@ -9,22 +9,19 @@ feature 'students' do
     end
   end
 
-  # context 'students have been added' do
-  #   before { School.create name: 'CUNEF' }
-  #
-  #   scenario 'display students' do
-  #     visit '/'
-  #     click_link 'Add a student'
-  #     fill_in 'Name', with: 'Luca'
-  #     fill_in 'Email', with: 'luca@gmail.com'
-  #     select 'CUNEF', from: "student_school"
-  #     click_button 'Create Student'
-  #     expect(page).to have_content 'Luca'
-  #     expect(page).not_to have_content 'No students to show'
-  #   end
-  # end
-  #
-  context 'adding a new student' do
+  context 'students have been added' do
+    before { Student.create name: 'Luca', email: 'Luca@gmail.com' }
+    before { Student.create name: 'Carlo', email: 'Carlo@gmail.com' }
+
+    scenario 'display students' do
+      visit '/'
+      expect(page).to have_content 'Luca'
+      expect(page).to have_content 'Carlo'
+      expect(page).not_to have_content 'No students to show'
+    end
+  end
+
+  # context 'adding a new student' do
   #   before { School.create name: 'CUNEF' }
   #
   #   scenario 'prompts user to fill out a form on a student, then display students' do
@@ -34,9 +31,9 @@ feature 'students' do
   #     fill_in 'Email', with: 'luca@gmail.com'
   #     all('School')[1].select_option
   #     click_button 'Create Student'
-  #     expect(page).to have_content 'Luca'
-  #     expect(current_path).to eq '/'
-  #   end
+    #   expect(page).to have_content 'Luca'
+    #   expect(current_path).to eq '/'
+    # end
   # end
 
 end

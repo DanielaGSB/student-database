@@ -12,19 +12,19 @@
     </thead>
     <tbody>
       <%if @students.any? %>
-        <% @students.each do |student| %>
-          <tr>
-            <td><%= student.name %></td>
-            <td><%= student.email %></td>
-            <td>
-              <%student.schools.each do |school| %>
-                <%= school.name%>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
+      <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.email %></td>
+        <td>
+          <%student.schools.each do |school| %>
+          <%= school.name%>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
       <% else %>
-        <h1 class='h3'>No students to show</h1>
+      <h1 class='h3'>No students to show</h1>
       <% end %>
     </tbody>
   </table>
