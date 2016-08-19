@@ -11,7 +11,7 @@ feature 'students' do
 
   context 'students have been added' do
     before do
-      Student.create(name: 'Luca', email: 'luca@gmail.com')
+      Student.create(name: 'Luca', email: 'luca@gmail.com', school: 'CUNEF')
     end
     scenario 'display students' do
       visit '/'
@@ -26,6 +26,7 @@ feature 'students' do
       click_link 'Add a student'
       fill_in 'Name', with: 'Luca'
       fill_in 'Email', with: 'luca@gmail.com'
+      select 'CUNEF', from: 'Schools'
       click_button 'Create Student'
       expect(page).to have_content 'Luca'
       expect(current_path).to eq '/'
