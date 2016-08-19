@@ -23,6 +23,18 @@ Things you may want to cover:
 
 * ...
 
+Task Instructions
+--------------------------------------------------------------------------------
+The Pelicanconnect database stores information on its members.
+Each member can be associated with 1 or more school.
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+You should build a demo that allows someone to add a new member with
+the fields “Name”, “Email Address” and "School" (selected from a list).
+
+Secondly it should display all members for a selected school.
+
+You may use any freely available programming language and modules.
+We will want to run and connect to your code on our own machines so if there
+are any unusual pre-requisites please document them.
+
+You must not spend more than seven hours on the task.
