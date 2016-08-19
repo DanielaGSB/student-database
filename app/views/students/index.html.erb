@@ -1,2 +1,9 @@
-No students to show
+<% if @students.any? %>
+  <% @students.each do |student| %>
+    <h2><%= student.name %></h2>
+    <h2><%= student.email %></h2>
+  <% end %>
+<% else %>
+  <h1>No students to show</h1>
+<% end %>
 <%= link_to "Add a student", new_student_path %>
