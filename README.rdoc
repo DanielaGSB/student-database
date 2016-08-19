@@ -38,3 +38,6 @@ We will want to run and connect to your code on our own machines so if there
 are any unusual pre-requisites please document them.
 
 You must not spend more than seven hours on the task.
+
+Missing
+- Testing validations

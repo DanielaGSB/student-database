@@ -3,5 +3,8 @@
   <%= f.text_field :name %>
   <%= f.label :email %>
   <%= f.text_field :email %>
+  <%= f.label :school %>
+  <div class
+  <%= f.collection_select(:school_ids, School.all, :id, :name) %>
   <%= f.submit %>
 <% end %>
