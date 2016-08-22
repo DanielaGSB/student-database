@@ -1,13 +1,23 @@
 class StudentsController < ApplicationController
+
   def index
     @students = Student.all
   end
 
   def new
+    @schools = School.all
     @student = Student.new
   end
 
+  def destroy
+    @student = Student.find(params[:id])
+    @student.destroy
+    flash[:notice] = "Student deleted successfully"
+    redirect_to '/'
+  end
+
   def create
+    @schools = School.all
     @student = Student.new(student_params)
     if @student.save
       redirect_to '/'
@@ -19,6 +29,7 @@ class StudentsController < ApplicationController
   private
 
   def student_params
-    params.require(:student).permit(:name, :email, :school_ids)
+    params.require(:student).permit(:name, :email, :school_id, :school_ids => [])
   end
+
 end

@@ -19,6 +19,13 @@ feature 'students' do
       expect(page).to have_content 'Carlo'
       expect(page).not_to have_content 'No students to show'
     end
+
+    scenario 'removes a student' do
+      visit '/'
+      click_link 'Delete Luca'
+      expect(page).to have_content 'Student deleted successfully'
+      expect(page).not_to have_content 'Luca'
+    end
   end
 
   context 'adding a new student' do
