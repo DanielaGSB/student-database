@@ -7,6 +7,10 @@ feature 'students' do
       expect(page).to have_content 'No students to show'
       expect(page).to have_link 'Add a student'
     end
+    scenario 'should display a link to view schoolst' do
+      visit '/'
+      expect(page).to have_link 'View schools'
+    end
   end
 
   context 'students have been added' do
