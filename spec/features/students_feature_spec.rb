@@ -37,10 +37,24 @@ feature 'students' do
       click_link 'Add a student'
       fill_in 'Name', with: 'Luca'
       fill_in 'Email', with: 'luca@gmail.com'
-      # all('student[school_ids]')[1].select_option
-      select('CUNEF', from: 'student[school_ids]')
+      select('CUNEF', from: 'student[school_ids][]')
       click_button 'Create Student'
       expect(page).to have_content 'Luca'
+      expect(page).to have_content 'CUNEF'
+      expect(page). not_to have_content 'ICADE'
+      expect(current_path).to eq '/'
+    end
+
+    scenario 'a user can link several schools to a student' do
+      visit '/'
+      click_link 'Add a student'
+      fill_in 'Name', with: 'Luca'
+      fill_in 'Email', with: 'luca@gmail.com'
+      select('CUNEF', from: 'student[school_ids][]')
+      select('ICADE', from: 'student[school_ids][]')
+      click_button 'Create Student'
+      expect(page).to have_content 'CUNEF'
+      expect(page).to have_content 'ICADE'
       expect(current_path).to eq '/'
     end
   end

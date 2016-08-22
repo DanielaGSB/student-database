@@ -4,6 +4,6 @@
   <%= f.label :email %>
   <%= f.text_field :email %>
   <%= f.label :school %>
-  <%= f.collection_select(:school_ids, @schools, :id, :name, {multiple: true}) %>
+  <%= f.collection_select(:school_ids, @schools, :id, :name,{}, {multiple: true}) %>
   <%= f.submit %>
 <% end %>
