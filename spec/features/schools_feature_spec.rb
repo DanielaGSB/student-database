@@ -2,14 +2,20 @@ require 'rails_helper'
 
 feature 'schools' do
   context 'viewing schools'
-    let!(:makers){ School.create(name:'makers') }
-    let!(:academy){ School.create(name:'academy') }
+  scenario 'lets a user view a school' do
+    FactoryGirl.create(:school)
+    FactoryGirl.create(:school, name: 'makers')
+    visit '/schools'
+    expect(page).to have_content 'makers'
+    expect(page).to have_content 'CUNEF'
+  end
 
   scenario 'lets a user view a school' do
-   visit '/schools'
-   click_link 'makers'
-   expect(page).to have_content 'makers'
-   expect(current_path).to eq "/schools/#{makers.id}"
+    school = FactoryGirl.create(:school, name: 'makers')
+    visit '/schools'
+    click_link 'makers'
+    expect(page).to have_content 'makers Students'
+    expect(current_path).to eq school_path(school)
   end
 
 end

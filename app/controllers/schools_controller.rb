@@ -1,6 +1,6 @@
 class SchoolsController < ApplicationController
   def index
-    @schools = School.all
+    @schools = School.all.order('name ASC')
   end
 
   def show

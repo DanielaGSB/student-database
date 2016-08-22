@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root to: "students#index"
+  root to: 'students#index'
   resources :students
-  resources :schools
+  resources :schools, only: [:show, :index]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
