@@ -26,6 +26,15 @@ feature 'students' do
       expect(page).to have_content 'Student deleted successfully'
       expect(page).not_to have_content 'Luca'
     end
+
+    scenario 'edits a student' do
+      visit '/'
+      click_link 'Edit Luca'
+      fill_in 'Email', with: 'lucagaleote@gmail.com'
+      click_button 'Update Student'
+      expect(page).to have_content 'lucagaleote@gmail.com'
+      expect(page).not_to have_content 'Luca@gmail.com'
+    end
   end
 
   context 'adding a new student' do

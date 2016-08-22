@@ -1,7 +1,6 @@
 class StudentsController < ApplicationController
-
   def index
-    @students = Student.all.order("name ASC")
+    @students = Student.all.order('name ASC')
   end
 
   def new
@@ -12,7 +11,18 @@ class StudentsController < ApplicationController
   def destroy
     @student = Student.find(params[:id])
     @student.destroy
-    flash[:notice] = "Student deleted successfully"
+    flash[:notice] = 'Student deleted successfully'
+    redirect_to '/'
+  end
+
+  def edit
+    @schools = School.all
+    @student = Student.find(params[:id])
+  end
+
+  def update
+    @student = Student.find(params[:id])
+    @student.update(student_params)
     redirect_to '/'
   end
 
@@ -29,7 +39,6 @@ class StudentsController < ApplicationController
   private
 
   def student_params
-    params.require(:student).permit(:name, :email, :school_id, :school_ids => [])
+    params.require(:student).permit(:name, :email, :school_id, school_ids: [])
   end
-
 end

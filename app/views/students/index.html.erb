@@ -9,6 +9,7 @@
         <th>Email</th>
         <th>Schools</th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -23,6 +24,7 @@
           <% end %>
         </td>
         <td><%= link_to "Delete #{student.name}", student_path(student), method: :delete %></td>
+        <td><%= link_to "Edit #{student.name}", edit_student_path(student)%></td>
       </tr>
       <% end %>
       <% else %>
