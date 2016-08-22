@@ -10,13 +10,14 @@ feature 'students' do
   end
 
   context 'students have been added' do
-    before { Student.create name: 'Luca', email: 'Luca@gmail.com' }
-    before { Student.create name: 'Carlo', email: 'Carlo@gmail.com' }
-
+    before :each do
+      FactoryGirl.create(:student)
+      FactoryGirl.create(:student, name: 'Carlo', email: 'carlo@example.com')
+    end
     scenario 'display students' do
       visit '/'
-      expect(page).to have_content 'Luca'
-      expect(page).to have_content 'Carlo'
+      expect(page).to have_content 'luca@example.com'
+      expect(page).to have_content 'carlo@example.com'
       expect(page).not_to have_content 'No students to show'
     end
 
@@ -30,23 +31,20 @@ feature 'students' do
     scenario 'edits a student' do
       visit '/'
       click_link 'Edit Luca'
-      fill_in 'Email', with: 'lucagaleote@gmail.com'
+      fill_in 'Email', with: 'lucagaleote@example.com'
       click_button 'Update Student'
-      expect(page).to have_content 'lucagaleote@gmail.com'
-      expect(page).not_to have_content 'Luca@gmail.com'
+      expect(page).to have_content 'lucagaleote@example.com'
+      expect(page).not_to have_content 'luca@example.com'
     end
   end
 
   context 'adding a new student' do
-    before { School.create name: 'CUNEF' }
-    before { School.create name: 'ICADE' }
-
+    before :each do
+      FactoryGirl.create(:school)
+      FactoryGirl.create(:school, name: 'ICADE')
+    end
     scenario 'prompts user to fill out a form on a student, then display students' do
-      visit '/'
-      click_link 'Add a student'
-      fill_in 'Name', with: 'Luca'
-      fill_in 'Email', with: 'luca@gmail.com'
-      select('CUNEF', from: 'student[school_ids][]')
+      fill_in_form
       click_button 'Create Student'
       expect(page).to have_content 'Luca'
       expect(page).to have_content 'CUNEF'
@@ -55,11 +53,7 @@ feature 'students' do
     end
 
     scenario 'a user can link several schools to a student' do
-      visit '/'
-      click_link 'Add a student'
-      fill_in 'Name', with: 'Luca'
-      fill_in 'Email', with: 'luca@gmail.com'
-      select('CUNEF', from: 'student[school_ids][]')
+      fill_in_form
       select('ICADE', from: 'student[school_ids][]')
       click_button 'Create Student'
       expect(page).to have_content 'CUNEF'

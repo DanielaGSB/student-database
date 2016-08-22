@@ -32,6 +32,7 @@ class StudentsController < ApplicationController
     if @student.save
       redirect_to '/'
     else
+      flash[:alert] = 'Please review the information provided'
       render 'new'
     end
   end
