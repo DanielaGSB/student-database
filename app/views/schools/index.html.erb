@@ -1,3 +1,18 @@
-<% @schools.each do |school| %>
-  <%= link_to school.name, school_path(school)%>
-<% end %>
+<header>
+  <h1 class="h3">Schools</h1>
+</header>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>School</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @schools.each do |school| %>
+    <tr>
+      <td><%= link_to school.name, school_path(school) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Back', students_path %>

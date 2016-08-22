@@ -1,6 +1,22 @@
-<%= @school.name %>
-Students:
-<% @school.students.each do |student| %>
-  <%= student.name %>
-  <%= link_to "Delete #{student.name}", student_path(student), method: :delete %>
-<% end %>
+<header>
+  <h1 class="h3">
+    <%= @school.name %> Students
+  </h1>
+</header>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @school.students.each do |student| %>
+    <tr>
+      <td><%= student.name %></td>
+      <td><%= link_to "Delete #{student.name}", student_path(student), method: :delete %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Back', schools_path %>
