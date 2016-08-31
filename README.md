@@ -1,5 +1,5 @@
 
-Task Instructions
+User Stories
 --------------------------------------------------------------------------------
 As an administrator, to keep track of my clients, I want a Student database       
 that stores information on its members.(Each member can be associated with 1 or more school.)               
@@ -12,7 +12,7 @@ As an administrator I want to see all members from a selected school.
 Installation Instructions
 --------------------------------------------------------------------------------
 Clone and cd into directory           
-$ git clone git@bitbucket.org:danielagsb/student-directory.git        
+$ git clone https://github.com/DanielaGSB/student-database.git               
 $ cd student-directory     
 
 Create the database and carry out migrations           
